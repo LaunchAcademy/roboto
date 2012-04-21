@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/LaunchWare/roboto.png)](http://travis-ci.org/LaunchWare/roboto)
 
-Roboto is a Rails Engine that gives you the ability to specify enviornment specific robots in your Rails 3.0+ application.
+Roboto is a Rails Engine that gives you the ability to specify enviornment specific robots in your Rails 3.1+ application.
 
 Don't let crawlers access your staging environment. This is [bad for SEO](http://www.seomoz.org/learn-seo/duplicate-content).
 
