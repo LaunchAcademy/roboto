@@ -2,10 +2,10 @@
 require File.expand_path('../lib/roboto/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Dan Pickett"]
-  gem.email         = ["dpickett@enlightsolutions.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.authors       = ['Dan Pickett']
+  gem.email         = ['dan.pickett@launchware.com']
+  gem.description   = %q{A Rails Engine to help with robots.txt}
+  gem.summary       = %q{A Rails Engine to help with robots.txt}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -14,4 +14,15 @@ Gem::Specification.new do |gem|
   gem.name          = "roboto"
   gem.require_paths = ["lib"]
   gem.version       = Roboto::VERSION
+
+  gem.add_dependency 'rails', '>= 3.0.0'
+  gem.add_dependency 'actionpack', '>= 3.0.0'
+
+  gem.add_development_dependency 'rspec-rails', '~> 2.9.0'
+  gem.add_development_dependency 'capybara'
+  gem.add_development_dependency 'fakefs'
+
+  #we need this for the dummy app
+  gem.add_development_dependency 'sqlite3'
 end
+

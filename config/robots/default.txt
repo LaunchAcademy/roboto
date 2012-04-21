@@ -1,0 +1,2 @@
+# By default, we allow crawling so nothing to declare here
+
