@@ -13,3 +13,12 @@ rescue LoadError
   puts "RSpec is not installed"
 end
 
+begin
+  require "yard"
+  YARD::Rake::YardocTask.new do |t|
+    t.files   = ['lib/**/*.rb']   # optional
+  end
+rescue LoadError
+  puts "Yard is not installed"
+end
+

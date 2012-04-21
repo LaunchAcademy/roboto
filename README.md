@@ -1,24 +1,40 @@
 # Roboto
 
-TODO: Write a gem description
+Roboto is a Rails Engine that gives you the ability to specify enviornment specific robots in your Rails 3.0+ application.
 
-## Installation
+Don't let crawlers access your staging environment. This is [bad for SEO](http://www.seomoz.org/learn-seo/duplicate-content).
 
-Add this line to your application's Gemfile:
+## Installing
 
-    gem 'roboto'
+First, remove the default, generate robots.txt in your Rails App
 
-And then execute:
+```
+  #> rm public/robots.txt
+```
 
-    $ bundle
+Next, add roboto to your gemfile:
 
-Or install it yourself as:
+```
+  gem 'roboto'
+```
 
-    $ gem install roboto
+Then, add robot to your routes (config/routes.rb):
 
-## Usage
+```
+  Rails.application.routes.draw do
+    mount_roboto
+  end
+```
 
-TODO: Write usage instructions here
+You can now specify environment specific robots.txt files in config/robots.
+
+It's recommended for staging that you do disallow crawlers from accessing your site. Once you've created a separate Rails environment for staging, define a config/robots/staging.txt file like so:
+
+```
+  #place this in config/robots/staging.txt
+  User-Agent: *
+  Disallow: /
+```
 
 ## Contributing
 
@@ -27,3 +43,4 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+

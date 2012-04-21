@@ -1,9 +1,20 @@
 module Roboto
+  #provides the content of effective robots.txt file
   class ContentProvider
+    # Reads the contents of the effective robots.txt file
+    # @return [String] the contents of the effective robots.txt file
     def contents
       @contents ||= File.read(path)
     end
 
+    # Determines the most relevant robots.txt file.
+    #
+    # It checks for the paths in the following order
+    #
+    # 1. Rails.root/config/robots/<environment>.txt (ie production.txt)
+    # 2. Rails.root/config/robots/default.txt
+    # 3. The default, blank robots.txt provided by the gem
+    # @return [Path] the path of the effective robots.txt file
     def path
       lookup_paths.each do |f|
         if FileTest.exist?(f)
