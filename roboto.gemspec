@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['dan.pickett@launchware.com']
   gem.description   = %q{A Rails Engine to help with robots.txt}
   gem.summary       = %q{A Rails Engine to help with robots.txt}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/LaunchWare/roboto"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
