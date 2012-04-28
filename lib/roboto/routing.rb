@@ -3,7 +3,7 @@ module Roboto
   module Routing
     # convenience function for mounting the roboto rails engine to root
     def mount_roboto
-      mount Roboto::Engine => "/"
+      mount Roboto::Engine => "/robots.txt"
     end
   end
 end
