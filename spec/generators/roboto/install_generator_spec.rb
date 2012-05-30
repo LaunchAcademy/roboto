@@ -9,6 +9,7 @@ describe Roboto::Generators::InstallGenerator do
 
   before do
     prepare_destination
+    copy_routes
   end
 
   describe 'Test presence of robots.txt' do
@@ -36,6 +37,15 @@ describe Roboto::Generators::InstallGenerator do
     describe 'config/routes.rb' do
         subject { file('config/routes.rb') }
         it { should exist }
+        it { should contain "mount_roboto" }
     end
+  end
+
+  def copy_routes
+    routes = File.expand_path("../../../dummy/config/routes.rb", __FILE__)
+    destination = File.join(destination_root, "config")
+
+    FileUtils.mkdir_p(destination)
+    FileUtils.cp routes, destination
   end
 end

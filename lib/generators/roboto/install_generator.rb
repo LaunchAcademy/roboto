@@ -20,12 +20,6 @@ module Roboto
       end
 
       def add_roboto_route
-        # special tricks for test generator with ammeter
-        # is launch in clean folder without nothing
-        unless FileTest.exist?(File.join(destination_root + "config"))
-          empty_directory "config"
-          create_file("config/routes.rb")
-        end
         route "mount_roboto"
       end
 
