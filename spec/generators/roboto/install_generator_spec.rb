@@ -1,51 +1,45 @@
 require 'spec_helper'
-
-# Generators are not automatically loaded by Rails
 require 'generators/roboto/install_generator'
 
 describe Roboto::Generators::InstallGenerator do
-  # Tell the generator where to put its output (what it thinks of as Rails.root)
   destination File.expand_path("../../../dummy_generator", __FILE__)
 
-  before do
-    prepare_destination
-    copy_routes
-  end
+  before {prepare_destination}
 
-  describe 'Test presence of robots.txt' do
-    before { run_generator }
-
-    describe 'config/robots/production.txt' do
-        subject { file('config/robots/production.txt') }
-        it { should exist }
+  describe 'presence of roboto configuration file' do
+    before do
+      @env_availabe = ["roboto_env", "staging", "production"]
+      create_fake_env
+      create_routes_rb
+      run_generator
     end
 
-    describe 'config/robots/staging.txt' do
-        subject { file('config/robots/staging.txt') }
+    ["roboto_env", "staging", "production"].each  do |env|
+       describe 'config/robots/#{env}.txt' do
+        subject { file("config/robots/#{env}.txt") }
         it { should exist }
         it { should contain "User-Agent: *" }
         it { should contain "Disallow: /" }
-    end
-
-    describe 'config/robots/development.txt' do
-        subject { file('config/robots/development.txt') }
-        it { should exist }
-        it { should contain "User-Agent: *" }
-        it { should contain "Disallow: /" }
+      end
     end
 
     describe 'config/routes.rb' do
-        subject { file('config/routes.rb') }
-        it { should exist }
-        it { should contain "mount_roboto" }
+      subject { file('config/routes.rb') }
+      it { should exist }
+      it { should contain "mount_roboto" }
     end
   end
 
-  def copy_routes
+  def create_routes_rb
     routes = File.expand_path("../../../dummy/config/routes.rb", __FILE__)
     destination = File.join(destination_root, "config")
-
     FileUtils.mkdir_p(destination)
     FileUtils.cp routes, destination
+  end
+
+  def create_fake_env
+    destination = File.join(destination_root, "config/environments")
+    FileUtils.mkdir_p(destination)
+    @env_availabe.each {|env|  FileUtils.touch(destination_root + "/config/environments/#{env}.rb")}
   end
 end

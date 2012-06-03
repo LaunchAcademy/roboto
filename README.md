@@ -18,17 +18,10 @@ After you need to run the generator:
 #>  rails generate roboto:install
 ```
 
-You can now specify environment specific robots.txt files in config/robots, by default crawlers are disallow on staging and production environments.
-
 If you already have robots.txt, it will be kept for your production environment in config/robots/production.txt
 
-It's recommended for staging that you do disallow crawlers from accessing your site. Once you've created a separate Rails environment for staging, define a config/robots/staging.txt file like so:
-
-```
-  #place this in config/robots/staging.txt
-  User-Agent: *
-  Disallow: /
-```
+You can now specify environment specific robots.txt files in config/robots/.
+By default crawlers are disallow from accessing your site has been made for all your environments.
 
 ## Contributing
 

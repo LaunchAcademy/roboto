@@ -1,6 +1,6 @@
 ===============================================================================
-Disallow crawlers from accessing your site has been made for
-staging/production/development environments.
+Disallow crawlers from accessing your site has been made for all
+your environments.
 
 If you had a robots.txt in public,
 it was moved to config/robots/production.txt

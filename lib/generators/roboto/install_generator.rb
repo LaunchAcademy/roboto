@@ -5,17 +5,21 @@ module Roboto
 
       desc "Creates a Roboto locale files to your application."
 
-      def copy_locale
-        empty_directory "config/robots"
-        copy_file "robots.txt", "config/robots/production.txt" unless FileTest.exists?("public/robots.txt")
-        copy_file "robots.txt", "config/robots/staging.txt"
-        copy_file "robots.txt", "config/robots/development.txt"
-      end
-
-      def deplace_old_robot
+      def copy_robots
         if FileTest.exists?("public/robots.txt")
           copy_file File.join(destination_root + "/public/robots.txt"), "config/robots/production.txt"
           remove_file "public/robots.txt"
+        end
+      end
+
+      def copy_locale
+        empty_directory "config/robots"
+        env_list = Dir.glob("#{destination_root}/config/environments/*")
+        env_list.each do |env_file|
+          env_name = File.basename(env_file, ".rb")
+          unless env_name == "production" &&  FileTest.exists?("public/robots.txt")
+            copy_file "robots.txt", "config/robots/#{env_name}.txt"
+          end
         end
       end
 
@@ -24,7 +28,7 @@ module Roboto
       end
 
       def show_readme
-        readme "README"
+        readme "README" if behavior == :invoke
       end
     end
   end
