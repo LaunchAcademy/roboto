@@ -19,10 +19,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'actionpack', '>= 3.0.0'
 
   gem.add_development_dependency 'rspec-rails', '~> 2.9.0'
+  gem.add_development_dependency 'ammeter'
   gem.add_development_dependency 'capybara'
   gem.add_development_dependency 'fakefs'
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'redcarpet'
+
 
   #we need this for the dummy app
   gem.add_development_dependency 'sqlite3'

@@ -7,36 +7,21 @@ Roboto is a Rails Engine that gives you the ability to specify enviornment speci
 Don't let crawlers access your staging environment. This is [bad for SEO](http://www.seomoz.org/learn-seo/duplicate-content).
 
 ## Installing
-
-First, remove the default, generate robots.txt in your Rails App
-
-```
-  #> rm public/robots.txt
-```
-
-Next, add roboto to your gemfile:
+You can add it to your Gemfile with:
 
 ```
-  gem 'roboto'
+gem 'roboto'
 ```
 
-Then, add robot to your routes (config/routes.rb):
-
+After you need to run the generator:
 ```
-  Rails.application.routes.draw do
-    mount_roboto
-  end
+#>  rails generate roboto:install
 ```
 
-You can now specify environment specific robots.txt files in config/robots.
+If you already have robots.txt, it will be kept for your production environment in config/robots/production.txt
 
-It's recommended for staging that you do disallow crawlers from accessing your site. Once you've created a separate Rails environment for staging, define a config/robots/staging.txt file like so:
-
-```
-  #place this in config/robots/staging.txt
-  User-Agent: *
-  Disallow: /
-```
+You can now specify environment specific robots.txt files in config/robots/.
+By default crawlers are disallow from accessing your site has been made for all your environments.
 
 ## Contributing
 

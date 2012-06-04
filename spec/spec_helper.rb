@@ -6,6 +6,7 @@ require "rails/test_help"
 
 require 'capybara/rspec'
 require 'rspec/rails'
+require 'ammeter/init'
 
 Rails.backtrace_cleaner.remove_silencers!
 
