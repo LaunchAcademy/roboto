@@ -6,4 +6,6 @@ If you had a robots.txt in public,
 it was moved to config/robots/production.txt
 
 You can now specify environment specific robots.txt files in config/robots.
+
+Domo arigato!
 ===============================================================================
