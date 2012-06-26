@@ -17,8 +17,9 @@ describe Roboto::ContentProvider do
 
   it 'uses the environment specific file if found' do
     path = Rails.root.join("config/robots/test.txt")
-    FileUtils.touch(path)
+    File.open(path, 'wb') { |f| f.write(Rails.env) }
     content_provider.path.should eql(path)
+    content_provider.contents.should eql(Rails.env)
   end
 
   it 'supports erb pre-processing' do

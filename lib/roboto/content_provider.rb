@@ -12,6 +12,7 @@ module Roboto
       if path.extname == '.erb'
         @contents = ERB.new(@contents).result
       end
+      @contents
     end
 
     # Determines the most relevant robots.txt file.
