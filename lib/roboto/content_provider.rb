@@ -5,12 +5,12 @@ module Roboto
   class ContentProvider
     # Reads the contents of the effective robots.txt file
     # @return [String] the contents of the effective robots.txt file
-    def contents
+    def contents(custom_binding = nil)
       return @contents unless @contents.nil?
-      
+
       @contents = File.read(path)
       if path.extname == '.erb'
-        @contents = ERB.new(@contents).result
+        @contents = ERB.new(@contents).result(custom_binding ? custom_binding : binding)
       end
       @contents
     end
