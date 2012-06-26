@@ -1,10 +1,18 @@
+require 'erb'
+
 module Roboto
   #provides the content of effective robots.txt file
   class ContentProvider
     # Reads the contents of the effective robots.txt file
     # @return [String] the contents of the effective robots.txt file
-    def contents
-      @contents ||= File.read(path)
+    def contents(custom_binding = nil)
+      return @contents unless @contents.nil?
+
+      @contents = File.read(path)
+      if path.extname == '.erb'
+        @contents = ERB.new(@contents).result(custom_binding ? custom_binding : binding)
+      end
+      @contents
     end
 
     # Determines the most relevant robots.txt file.
@@ -30,7 +38,9 @@ module Roboto
     def lookup_paths
       [
         Rails.root.join("config/robots/#{Rails.env}.txt"),
+        Rails.root.join("config/robots/#{Rails.env}.txt.erb"),
         Rails.root.join(relative_path_to_default),
+        Rails.root.join("#{relative_path_to_default}.erb"),
         Roboto::Engine.root.join(relative_path_to_default)
       ]
     end
