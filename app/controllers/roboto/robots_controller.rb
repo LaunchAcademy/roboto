@@ -8,7 +8,8 @@ module Roboto
 
     protected
     def robot_contents
-      Roboto::ContentProvider.new.contents
+      # process erb template in the context of this controller request
+      Roboto::ContentProvider.new.contents(binding)
     end
 
     def robots_path
