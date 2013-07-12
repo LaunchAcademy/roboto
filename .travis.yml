@@ -1,4 +1,7 @@
-rvm: 
-  - 1.9.2
+language: ruby
+rvm:
   - 1.9.3
-
+  - 2.0.0
+gemfile:
+  - Gemfile
+  - Gemfile.rails4-0
