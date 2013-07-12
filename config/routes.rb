@@ -1,4 +1,3 @@
 Roboto::Engine.routes.draw do
-  get '/' => 'Robots#show'
+  get '/' => 'robots#show'
 end
-
