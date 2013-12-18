@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rails', '>= 3.1.0'
   gem.add_dependency 'actionpack', '>= 3.0.0'
 
-  gem.add_development_dependency 'rspec-rails', '~> 2.9.0'
+  gem.add_development_dependency 'rspec-rails', '~> 2.9'
   gem.add_development_dependency 'ammeter'
   gem.add_development_dependency 'capybara'
   gem.add_development_dependency 'fakefs'
