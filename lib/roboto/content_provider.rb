@@ -10,7 +10,7 @@ module Roboto
 
       @contents = File.read(path)
       if path.extname == '.erb'
-        @contents = ERB.new(@contents).result(custom_binding ? custom_binding : binding)
+        @contents = ERB.new(@contents, nil, '>').result(custom_binding ? custom_binding : binding)
       end
       @contents
     end
