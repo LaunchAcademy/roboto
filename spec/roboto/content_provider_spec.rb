@@ -29,6 +29,13 @@ describe Roboto::ContentProvider do
     content_provider.contents.should eql(Rails.env)
   end
 
+  it 'strips newlines in closing erb tags' do
+    path = Rails.root.join("config/robots/test.txt.erb")
+    File.open(path, 'wb') { |f| f.write("<% if true %>\n<%= Rails.env %>\n<% end %>") }
+    content_provider.path.should eql(path)
+    content_provider.contents.should eql(Rails.env)
+  end
+
   it 'uses the default robots file if found in the rails root' do
     path = Rails.root.join(relative_path_to_default)
     FileUtils.touch(path)
