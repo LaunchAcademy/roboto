@@ -28,5 +28,7 @@ Gem::Specification.new do |gem|
 
   #we need this for the dummy app
   gem.add_development_dependency 'sqlite3'
+
+  gem.add_runtime_dependency 'gem_config'
 end
 

@@ -1,5 +1,7 @@
 module Roboto
   class RobotsController < Roboto::ApplicationController
+    after_action :set_cache_headers, if: -> { Roboto.configuration.cache }
+
     def show
       render :text => robot_contents,
         :layout => false,
@@ -26,7 +28,12 @@ module Roboto
       end
     end
 
-
+    private
+    def set_cache_headers
+      if !Roboto.configuration.cache_only_in_production || Rails.env.production?
+        expires_in Roboto.configuration.cache_expires_in, public: Roboto.configuration.cache_public
+      end
+    end
   end
 end
 
