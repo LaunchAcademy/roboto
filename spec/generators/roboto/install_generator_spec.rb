@@ -6,7 +6,7 @@ describe Roboto::Generators::InstallGenerator do
 
   before {prepare_destination}
 
-  describe 'presence of roboto configuration file' do
+  describe 'presence of roboto configuration files' do
     before do
       @env_availabe = ["roboto_env", "staging", "production"]
       create_fake_env
@@ -27,6 +27,15 @@ describe Roboto::Generators::InstallGenerator do
       subject { file('config/routes.rb') }
       it { should exist }
       it { should contain "mount_roboto" }
+    end
+
+    describe 'config/initializers/roboto.rb' do
+      subject { file('config/initializers/roboto.rb') }
+      it { should exist }
+      it { should contain "config.cache" }
+      it { should contain "config.cache_only_in_production" }
+      it { should contain "config.cache_expires_in" }
+      it { should contain "config.cache_public" }
     end
   end
 

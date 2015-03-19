@@ -20,6 +20,12 @@ module Roboto
         end
       end
 
+      def copy_initializer
+        unless FileTest.exists?("config/initializers/roboto.rb")
+          template "initializer.rb", "config/initializers/roboto.rb"
+        end
+      end
+
       def add_roboto_route
         route "mount_roboto"
       end
