@@ -15,9 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Roboto::VERSION
 
-  gem.add_dependency 'rails', '~> 4.2'
+  gem.add_dependency 'rails', '>= 4.2'
 
-  gem.add_development_dependency 'rspec-rails', '~> 3.6.0'
+  gem.add_development_dependency 'rspec-rails', '>= 3.6'
   gem.add_development_dependency 'ammeter'
   gem.add_development_dependency 'capybara'
   gem.add_development_dependency 'fakefs'
