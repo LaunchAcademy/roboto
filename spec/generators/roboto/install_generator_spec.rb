@@ -17,16 +17,16 @@ describe Roboto::Generators::InstallGenerator do
     ["roboto_env", "staging", "production"].each  do |env|
        describe 'config/robots/#{env}.txt' do
         subject { file("config/robots/#{env}.txt") }
-        it { should exist }
-        it { should contain "User-Agent: *" }
-        it { should contain "Disallow: /" }
+        it { is_expected.to exist }
+        it { is_expected.to contain "User-Agent: *" }
+        it { is_expected.to contain "Disallow: /" }
       end
     end
 
     describe 'config/routes.rb' do
       subject { file('config/routes.rb') }
-      it { should exist }
-      it { should contain "mount_roboto" }
+      it { is_expected.to exist }
+      it { is_expected.to contain "mount_roboto" }
     end
   end
 
