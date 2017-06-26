@@ -15,8 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Roboto::VERSION
 
-  gem.add_dependency 'rails', '>= 3.1.0'
-  gem.add_dependency 'actionpack', '>= 3.0.0'
+  gem.add_dependency 'rails', '~> 4.2'
 
   gem.add_development_dependency 'rspec-rails', '~> 3.6.0'
   gem.add_development_dependency 'ammeter'
@@ -25,8 +24,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'redcarpet'
 
-
   #we need this for the dummy app
   gem.add_development_dependency 'sqlite3'
 end
-
