@@ -1,7 +1,7 @@
 module Roboto
   class RobotsController < Roboto::ApplicationController
     def show
-      render :text => robot_contents,
+      render :plain => robot_contents,
         :layout => false,
         :content_type => 'text/plain'
     end

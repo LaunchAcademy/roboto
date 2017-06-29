@@ -18,34 +18,34 @@ describe Roboto::ContentProvider do
   it 'uses the environment specific file if found' do
     path = Rails.root.join("config/robots/test.txt")
     File.open(path, 'wb') { |f| f.write(Rails.env) }
-    content_provider.path.should eql(path)
-    content_provider.contents.should eql(Rails.env)
+    expect(content_provider.path).to eq(path)
+    expect(content_provider.contents).to eq(Rails.env)
   end
 
   it 'supports erb pre-processing' do
     path = Rails.root.join("config/robots/test.txt.erb")
     File.open(path, 'wb') { |f| f.write('<%= Rails.env %>') }
-    content_provider.path.should eql(path)
-    content_provider.contents.should eql(Rails.env)
+    expect(content_provider.path).to eq(path)
+    expect(content_provider.contents).to eq(Rails.env)
   end
 
   it 'strips newlines in closing erb tags' do
     path = Rails.root.join("config/robots/test.txt.erb")
     File.open(path, 'wb') { |f| f.write("<% if true %>\n<%= Rails.env %>\n<% end %>") }
-    content_provider.path.should eql(path)
-    content_provider.contents.should eql(Rails.env)
+    expect(content_provider.path).to eq(path)
+    expect(content_provider.contents).to eq(Rails.env)
   end
 
   it 'uses the default robots file if found in the rails root' do
     path = Rails.root.join(relative_path_to_default)
     FileUtils.touch(path)
-    content_provider.path.should eql(path)
+    expect(content_provider.path).to eq(path)
   end
 
   it 'defaults to the gem provided robots if not found in rails root' do
     path = Roboto::Engine.root.join(relative_path_to_default)
     FileUtils.touch(path)
-    content_provider.path.should eql(Roboto::Engine.root.join(relative_path_to_default))
+    expect(content_provider.path).to eq(Roboto::Engine.root.join(relative_path_to_default))
   end
 end
 

@@ -8,7 +8,6 @@ feature 'user/bot visits robots.txt', %q{
 
   scenario "visit robots.txt" do
     visit "/robots.txt"
-    page.status_code.should eql(200)
+    expect(page.status_code).to eq 200
   end
 end
-
