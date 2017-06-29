@@ -8,7 +8,7 @@ describe Roboto::Generators::InstallGenerator do
 
   describe 'presence of roboto configuration file' do
     before do
-      @env_availabe = ["roboto_env", "staging", "production"]
+      @env_available = ["roboto_env", "staging", "production"]
       create_fake_env
       create_routes_rb
       run_generator
@@ -40,6 +40,6 @@ describe Roboto::Generators::InstallGenerator do
   def create_fake_env
     destination = File.join(destination_root, "config/environments")
     FileUtils.mkdir_p(destination)
-    @env_availabe.each {|env|  FileUtils.touch(destination_root + "/config/environments/#{env}.rb")}
+    @env_available.each {|env|  FileUtils.touch(destination_root + "/config/environments/#{env}.rb")}
   end
 end
