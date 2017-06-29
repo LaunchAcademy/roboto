@@ -6,6 +6,7 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'capybara/rspec'
 require 'rspec/rails'
+require 'rspec/expectations'
 require 'ammeter/init'
 
 Rails.backtrace_cleaner.remove_silencers!
