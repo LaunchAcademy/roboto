@@ -1,7 +1,8 @@
 module Roboto
   class RobotsController < Roboto::ApplicationController
     def show
-      render :plain => robot_contents,
+      render_sym = Rails.version.split(".")[0].to_i >= 5 ? :plain : :text
+      render render_sym => robot_contents,
         :layout => false,
         :content_type => 'text/plain'
     end
