@@ -1,6 +1,6 @@
 # Roboto
 
-[![Build Status](https://secure.travis-ci.org/LaunchWare/roboto.png)](http://travis-ci.org/LaunchWare/roboto)
+[![Build Status](https://secure.travis-ci.org/LaunchAcademy/roboto.png)](http://travis-ci.org/LaunchWare/roboto)
 
 Roboto is a Rails Engine that gives you the ability to specify enviornment specific robots in your Rails 4.2+ application.
 
